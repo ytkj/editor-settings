@@ -178,3 +178,15 @@
                   'katakana-jisx0201
                   '("ＭＳ ゴシック" . "unicode-bmp")
                   )
+
+
+;; 起動時のウィンドウサイズ指定
+(setq initial-frame-alist
+      (append (list
+	       '(width . 130)
+	       '(height . 40)
+;	       '(top . 0)
+;	       '(left . 0)
+	       )
+	      initial-frame-alist))
+(setq default-frame-alist initial-frame-alist)
