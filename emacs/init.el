@@ -155,7 +155,7 @@
  (setq mouse-wheel-scroll-amount
        '(1
         ((shift) . 10)
-        ((control) . 50)
+;        ((control) . 50)
         ))
 
 
@@ -167,7 +167,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
  ;;; 標準フォント
-(set-default-font "Consolas 11")
+(set-default-font "Consolas")
 
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
@@ -190,3 +190,32 @@
 	       )
 	      initial-frame-alist))
 (setq default-frame-alist initial-frame-alist)
+
+
+;; Ctrl+スクロールで文字フォントサイズ変更
+(defun increase-font-size ()
+  (interactive)
+  (set-face-attribute 'default
+		      nil
+		      :height
+		      (+ 10 (face-attribute 'default :height))))
+
+(defun decrease-font-size ()
+  (interactive)
+  (set-face-attribute 'default
+		      nil
+		      :height
+		      ((lambda (h) (if (<= h 10) h (- h 10)))
+		       (face-attribute 'default :height))))
+
+
+(global-set-key [C-mouse-4] 'increase-font-size)
+(global-set-key [C-wheel-up] 'increase-font-size)
+(global-set-key [?\C-+] 'increase-font-size)
+(global-set-key [?\C-=] 'increase-font-size)
+
+(global-set-key [C-mouse-5] 'decrease-font-size)
+(global-set-key [C-wheel-down] 'decrease-font-size)
+(global-set-key [?\C--] 'decrease-font-size)
+
+
