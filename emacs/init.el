@@ -167,23 +167,25 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
  ;;; 標準フォント
-(set-default-font "Consolas")
+(set-default-font "Consolas 13")
 
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
-                  '("ＭＳ ゴシック" . "unicode-bmp")
+                  ;'("ＭＳ ゴシック" . "unicode-bmp")
+                  '("Meiryo" . "unicode-bmp")
                   )
 
 (set-fontset-font (frame-parameter nil 'font)
                   'katakana-jisx0201
-                  '("ＭＳ ゴシック" . "unicode-bmp")
+                  ;'("ＭＳ ゴシック" . "unicode-bmp")
+                  '("Meiryo" . "unicode-bmp")
                   )
 
 
 ;; 起動時のウィンドウサイズ指定
 (setq initial-frame-alist
       (append (list
-	       '(width . 130)
+	       '(width . 120)
 	       '(height . 40)
 ;	       '(top . 0)
 ;	       '(left . 0)
@@ -219,3 +221,5 @@
 (global-set-key [?\C--] 'decrease-font-size)
 
 
+;; オートインデントでスペースを使う
+(setq-default indent-tabs-mode nil)
